@@ -1,0 +1,57 @@
+---
+
+- hosts: localhost
+  become: yes
+
+ 
+  tasks:
+
+    - name: update repo
+      apt:
+        update_cache: true
+
+
+
+
+
+    - name: install depency
+      apt: name={{ item }} state=present
+      with_items:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+
+
+
+    - name: add docker key
+      become: yes
+      shell: curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+
+
+
+    - name: Add docker repository
+      become: yes
+      shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+
+
+    - name: update repo
+      apt:
+        update_cache: true
+
+
+    
+    - name: install depency
+      apt: name={{ item }} state=present
+      with_items:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+    - name: install docker compose    
+      get_url:
+        url: https://github.com/docker/compose/releases/download/1.27.3/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: 755
