@@ -31,7 +31,9 @@
 
 
 
-
+    - name:
+      become: yes
+      shell: echo \ deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable
 
 
     - name: update repo
