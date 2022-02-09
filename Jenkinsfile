@@ -6,7 +6,7 @@ pipeline {
         stage("Test") {
             when {
                 not {
-                    branch "master"
+                    branch "main"
                 }
             }
             steps {
