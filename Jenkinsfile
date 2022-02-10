@@ -5,9 +5,8 @@ pipeline {
     stage('Docker Build') {
     
       when {
-                not {
-                    branch "test"
-                }
+            branch "test"
+              
             }
      steps {
             echo "hi"
