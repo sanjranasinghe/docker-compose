@@ -4,7 +4,7 @@ pipeline {
     stage('Docker Build') {
 steps {
          script {
-          switch(GIT_BRANCH) {
+          switch(BRANCH) {
             case "main": 
               echo 'main'
               break
