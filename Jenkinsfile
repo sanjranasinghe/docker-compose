@@ -2,21 +2,20 @@ pipeline {
   agent any
   stages {
     stage('Docker Build') {
-      when {
-        branch 'main'
-      }
-      steps {
-            echo "hi"
+steps {
+         script {
+          switch(GIT_BRANCH) {
+            case "main": 
+              echo 'main'
+              break
+            case "test": 
+              echo 'test'
+              break
+          }
+        }
       }
     }
 
-    stage('Docker Push') {
-      when {
-        branch 'test'
-      }
-      steps {
-        echo "test"
-    }
-  }
+    
 }
 }
