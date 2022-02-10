@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('Docker Build') {
       when {
-        BRANCH 'main'
+        branch "main"
       }
       steps {
             echo "hi"
@@ -13,7 +13,7 @@ pipeline {
 
     stage('Docker Push') {
       when {
-        BRANCH 'test'
+        branch "test"
       }
       steps {
         echo "test"
