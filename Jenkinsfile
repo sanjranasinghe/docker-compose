@@ -6,10 +6,10 @@ steps {
          script {
           switch(BRANCH) {
             case "main": 
-              echo 'main sanjaya'
+              echo 'main sanjaya1'
               break
             case "test": 
-              echo 'test'
+              echo 'test2'
               break
           }
         }
