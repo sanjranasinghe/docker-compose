@@ -4,6 +4,11 @@ pipeline {
   stages {
     stage('Docker Build') {
     
+      when {
+                not {
+                    branch "test"
+                }
+            }
      steps {
             echo "hi"
       }
