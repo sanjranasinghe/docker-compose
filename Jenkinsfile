@@ -3,17 +3,12 @@ pipeline {
     agent any
     stages {
       
-     
-        stage("Test") {
-            when {
-                not {
-                    branch "test"
-                }
-            }
-            steps {
-                echo "Test stage."
-            }
+     stage('only on master') {
+  if (CURRENT_BRANCH == 'test') {
+  input {
+    echo "Test stage."
+  }
+}
         }
     }
 }
-
