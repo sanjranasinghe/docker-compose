@@ -18,7 +18,8 @@ steps {
          script {
           switch(BRANCH) {
             case "main": 
-              ssh root@172.16.15.46
+               sshagent(credentials : ["test-servers"]) {
+               sh """ssh root@172.16.15.46 << EOF
               mkdir /opt/docker
                      cd /opt/docker
                      git init
