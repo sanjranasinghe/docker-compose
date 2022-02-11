@@ -1,6 +1,18 @@
 pipeline {
   agent any
   stages {
+    
+     stage("git"){
+            
+            steps{
+                
+                git branch: 'main', url: 'https://github.com/sanjranasinghe/docker-compose.git'
+
+            }
+            
+            }
+    
+    
     stage('Docker Build') {
 steps {
          script {
