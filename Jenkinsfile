@@ -30,10 +30,7 @@ steps {
                      exit
                      exit
             EOF"""
-              break
-            case "test": 
-              echo 'test2'
-              break
+             
           }
         }
       }
