@@ -1,3 +1,4 @@
+properties([parameters([gitParameter(branch: '', branchFilter: 'origin/(.*)', defaultValue: 'origin/*', name: 'BRANCH', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH')])])
 pipeline {
   agent any
   stages {
@@ -23,7 +24,7 @@ steps {
               mkdir /opt/docker
                      cd /opt/docker
                      git init
-                     git pull https://github.com/sanjranasinghe/docker-compose.git
+                     git pull origin ${params.BRANCH}
                      ansible-playbook ansible.yml
                      docker-compose up -d
                      exit
@@ -48,7 +49,7 @@ script {
               mkdir /opt/docker
                      cd /opt/docker
                      git init
-                     git pull https://github.com/sanjranasinghe/docker-compose.git
+                     git pull origin ${params.BRANCH}
                      ansible-playbook ansible.yml
                      docker-compose up -d
                      exit
