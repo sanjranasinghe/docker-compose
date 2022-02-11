@@ -42,7 +42,7 @@ steps {
 steps {
 script {
  switch(BRANCH) {
- case "test"
+ case "test":
  echo 'test2'
  break
 }
